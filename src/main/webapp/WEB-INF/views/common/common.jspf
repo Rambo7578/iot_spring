@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<c:set var="root" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="ver" value="?version=1.0.0"/>
+<c:set var="rPath" value="${root}/resources"/>
+
+<script src="${root}/resources/ui/js/jquery-3.2.1.js"></script>
+<script src="${root}/resources/ui/js/grid-obj.js"></script>
+<script src="${root}/resources/ui/js/bootstrap.min.js"></script>
+<script src="${root}/resources/ui/js/common.js"></script>
+<script src="${root}/resources/ui/js/bootstrap-table.js"></script>
+<script src="${root}/resources/ui/js/bootstrap-table.js"></script>
+<script src="${root}/resources/dx/dhtmlx.js${ver}"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="${root}/resources/ui/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="${root}/resources/ui/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="${root}/resources/ui/css/bootstrap-table.css">
+<link rel="stylesheet" type="text/css" href="${root}/resources/dx/fonts/font_roboto/roboto.css">
+<link rel="stylesheet" type="text/css" href="${root}/resources/dx/dhtmlx.css">
+<%@ include file="/WEB-INF/views/common/menu.jspf" %>
+

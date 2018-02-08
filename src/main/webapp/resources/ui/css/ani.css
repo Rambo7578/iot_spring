@@ -1,0 +1,79 @@
+* {
+  margin:0;
+  padding:0;
+}
+
+.e{
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+}
+h1#welcom{
+  font-size:60px;
+  font-weight:bold;
+  font-family: 'Montserrat', sans-serif;
+  text-align:center;
+  color:#ffd800;
+  letter-spacing:0px;
+  transition:1s;
+  -webkit-transition:1s;
+  -ms-transition:1s;
+  position: relative;
+  padding:10px;
+ 
+}
+
+h1#welcom:before,
+h1#welcom:after{
+  content:"";
+  position: absolute;
+  height: 7px;
+  width: 0px;
+  background:#ffd800;
+  transition:300ms;
+  -webkit-transition:1s;
+  -ms-transition:1s;
+  opacity:0.3;
+  left:50%;
+}
+
+h1#welcom:before{
+  bottom:0;
+ 
+}
+
+h1#welcom:after{
+  top:0;
+  
+}
+
+h1#welcom:hover{
+  letter-spacing:30px;
+}
+
+h1#welcom:hover:before,
+h1#welcom:hover:after{
+   width: 95%;
+    opacity:1;
+  left:0;
+
+}
+h1#welcom:hover ~ h2{
+  opacity:0;
+}
+
+h2{
+  color:#fff;
+  font-family: 'Pinyon Script', cursive;
+  text-align:center;
+  font-size:100px;
+  font-weight:100;
+  bottom:40px;
+  position: absolute;
+  transition:1s;
+  -webkit-transition:1s;
+  -ms-transition:1s;
+  opacity:0.1;
+  width: 100%;
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script src="/spring/resources/ui/js/jquery-3.2.1.js"></script>
+<script>
+	var gObj;
+	$(document).ready(function() {
+		gObj = new gridObj("testDiv")
+		gObj.setColumns(['name', 'age']);
+		
+		$.ajax({
+			url : "/spring/h2",
+			success : function(res) {
+				gObj.load(JSON.stringify(res));
+				gObj.init();
+			},
+			error : function(xhr) {
+				alert(2);
+				alert(xhr.responseText);
+			}
+		})
+	});
+
+	var gridObj = function(id) {
+		var obj = document.getElementById(id);
+		var htmlStr = "";
+		var colsStr = "";
+		var dataStr = "";
+		if (!obj) {
+			alert("check ID!");
+		}
+
+		this.setColumns = function(columns) {
+
+			for (var i = 0; i < columns.length; i++) {
+				colsStr += "<th>" + columns[i] + "</th>";
+			}
+		}
+
+		this.load = function(json) {
+			json = JSON.parse(json);
+			for (var i = 0; i < json.length; i++) {
+				var datas = json[i];
+				dataStr += "<tr>";
+
+				dataStr += "<td>" + datas.name + "</td>";
+				dataStr += "<td>" + datas.age + "</td>";
+				dataStr += "</tr>";
+			}
+		}
+
+		
+		
+		this.init = function() {
+			htmlStr += "<table border=1>";
+			htmlStr += "<tr>";
+			htmlStr += colsStr;
+			htmlStr += "</tr>";
+			htmlStr += dataStr;
+			htmlStr += "</table>";
+			obj.insertAdjacentHTML('afterbegin', htmlStr);
+		}
+	}
+</script>
+<body>
+	<div id="testDiv"></div>
+
+</body>
+</html>
