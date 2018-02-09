@@ -22,7 +22,7 @@ public class LogPrintAspect {
 		log.info("@Before =>{}", jp);
 	}
 
-	   @Around("execution(* com.iot.spring.controller.*Controller.*(..))")
+	   @Around("execution(* com.iot.spring.controller.*Controller.get*(..))")
 	   public Object aroundLog(ProceedingJoinPoint pjp) {
 	      log.info("@Around begin =>{}", pjp);
 	      Object obj = null;

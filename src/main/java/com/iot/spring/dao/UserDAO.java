@@ -2,12 +2,18 @@ package com.iot.spring.dao;
 
 import java.util.List;
 
+import com.iot.spring.vo.UserInfoVO;
 
-import com.iot.spring.vo.UserVO;
 
 public interface UserDAO {
-	public List<UserVO> selectUserList();
-	public int insertUser(UserVO uvo);
-	public int deleteUser(int uNo);
 	
+	public List<UserInfoVO> selectUserList();
+	public UserInfoVO selectUser(UserInfoVO ui);
+	public int insertUser(UserInfoVO ui);
+	public int deleteUser(UserInfoVO ui);
+	public int updateUser(UserInfoVO ui);
+		int checkUserInfo(UserInfoVO ui);
+		
+		List<UserInfoVO> selectUserInfoList(UserInfoVO ui);
+
 }

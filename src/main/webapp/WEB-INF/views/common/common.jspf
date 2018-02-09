@@ -5,6 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="root" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="ver" value="?version=1.0.0"/>
+<c:set var="isLogin" value="${(empty sessionScope.isLogin)? false:sessionScope.isLogin}"/>
 <c:set var="rPath" value="${root}/resources"/>
 
 <script src="${root}/resources/ui/js/jquery-3.2.1.js"></script>
@@ -23,5 +24,12 @@
 <link rel="stylesheet" type="text/css" href="${root}/resources/ui/css/bootstrap-table.css">
 <link rel="stylesheet" type="text/css" href="${root}/resources/dx/fonts/font_roboto/roboto.css">
 <link rel="stylesheet" type="text/css" href="${root}/resources/dx/dhtmlx.css">
+
+<!-- Chrome, Safari, IE 창 아이콘 적용 -->
+<link rel="shortcut icon" href="${rPath}/imgs/favicon.png">
+<!-- Firefox, Opera (Chrome and Safari say thanks but no thanks) -->
+<link rel="icon" href="${rPath}/imgs/favicon.png">
+
+
 <%@ include file="/WEB-INF/views/common/menu.jspf" %>
 

@@ -1,14 +1,23 @@
 package com.iot.spring.service;
 
 import java.util.List;
+import java.util.Map;
 
 
-
-import com.iot.spring.vo.UserVO;
+import com.iot.spring.vo.UserInfoVO;
 
 public interface UserService {
 	
-	public List<UserVO> getUserList();
-	public int insertUser(UserVO uvo);
-	public int deleteUser(int uNo);
+	public List<UserInfoVO> getUserList();
+	
+	public void insertUser(UserInfoVO ui, Map<String, Object> rMap);
+	public void deleteUser(UserInfoVO ui, Map<String, Object> rMap);
+	public void updateUser(UserInfoVO ui, Map<String, Object> rMap);
+	public UserInfoVO getUserInfo(UserInfoVO ui);
+
+	public List<UserInfoVO> getUserInfoList(UserInfoVO ui);
+	
+	
+	
+
 }

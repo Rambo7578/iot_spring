@@ -1,7 +1,7 @@
 package com.iot.spring.vo;
 
-public class UserVO {
-
+public class UserInfoVO {
+	
 	private int uNo;
 	private String uName;
 	private String uId;
@@ -10,7 +10,7 @@ public class UserVO {
 	private String admin;
 	@Override
 	public String toString() {
-		return "UserVO [uNo=" + uNo + ", uName=" + uName + ", uId=" + uId + ", uPwd=" + uPwd + ", uEmail=" + uEmail
+		return "UserInfoVO [uNo=" + uNo + ", uName=" + uName + ", uId=" + uId + ", uPwd=" + uPwd + ", uEmail=" + uEmail
 				+ ", admin=" + admin + "]";
 	}
 	public int getuNo() {
@@ -49,6 +49,5 @@ public class UserVO {
 	public void setAdmin(String admin) {
 		this.admin = admin;
 	}
-	
 	
 }

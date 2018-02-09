@@ -12,6 +12,7 @@
 		<typeAlias alias="tvo" type="com.iot.spring.vo.TableVO" />
 		<typeAlias alias="cvo" type="com.iot.spring.vo.ColumnVO" />
 		<typeAlias alias="ci" type="com.iot.spring.vo.ConnectionInfoVO" />
+		<typeAlias alias="ui" type="com.iot.spring.vo.UserInfoVO" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="sql/user.xml" />
