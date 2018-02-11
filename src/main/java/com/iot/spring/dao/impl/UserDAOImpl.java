@@ -1,16 +1,13 @@
 package com.iot.spring.dao.impl;
 
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.iot.spring.dao.UserDAO;
-
 import com.iot.spring.vo.UserInfoVO;
 
 
@@ -20,30 +17,45 @@ public class UserDAOImpl implements UserDAO {
 	private SqlSessionFactory ssf;
 
 	@Override
-	public List<UserInfoVO> selectUserList() {
-		SqlSession ss = ssf.openSession();
-		List<UserInfoVO> userList = ss.selectList("user.selectUser");
+	public List<UserInfoVO> selectUserInfoList(UserInfoVO ui) {
+	final SqlSession ss=ssf.openSession();
+		List<UserInfoVO> result=ss.selectList("user.selectUser",ui);
 		ss.close();
-		return userList;
-		
+		return result;
 	}
 
+
+	
+	
+	
+	
 	@Override
-	public UserInfoVO selectUser(UserInfoVO ui) {
-		SqlSession ss = ssf.openSession();
-		UserInfoVO uiv = ss.selectOne("user.selectUser", ui);
-		ss.close();
-		return uiv;
+	public UserInfoVO selectUserInfo(UserInfoVO ui) {
+		final SqlSession ss=ssf.openSession();
+		UserInfoVO rUi=ss.selectOne("user.insertUser",ui);
+		return rUi;
 	}
-
 
 	@Override
 	public int insertUser(UserInfoVO ui) {
-		int result = 0;
-		SqlSession ss = ssf.openSession();
-		result = ss.insert("user.insertUser", ui);
+		final SqlSession ss=ssf.openSession();
+		int result=ss.insert("user.insertUser",ui);
 		return result;
 	}
+	
+
+	
+
+	@Override
+	public int checkUserInfo(UserInfoVO ui) {
+		final SqlSession ss=ssf.openSession();
+		int result=ss.selectOne("user.checkUser",ui);
+		ss.close();
+		return result;
+	}
+
+	
+
 
 	@Override
 	public int deleteUser(UserInfoVO ui) {
@@ -61,21 +73,16 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
+
+
+
+
+
 	@Override
-	public int checkUserInfo(UserInfoVO ui) {
-		int result = 0;
-		final SqlSession ss = ssf.openSession();
-		result = ss.selectOne("user.selectUser", ui);
-		return result;
-		
+	public List<UserInfoVO> selectUserList() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-public List<UserInfoVO>selectUserInfoList(UserInfoVO ui){
-	int result = 0;
-	final SqlSession ss = ssf.openSession();
-	List<UserInfoVO> result=ss.select
-	result = ss.selectOne("user.selectUser", ui);
-	return result;
-}
 
 }

@@ -18,55 +18,43 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.iot.spring.service.UserService;
 import com.iot.spring.vo.UserInfoVO;
 
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
-	
+
 	@Autowired
 	private UserService us;
-	
+
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
-@RequestMapping(value="/login",method=RequestMethod.POST)
-public @ResponseBody Map<String,Object> login(
-		@Valid UserInfoVO ui,HttpSession hs){
-	Map<String,Object> map=new HashMap<String,Object>();
-	ui=us.getUserInfo(ui);
-	map.put("loginOk", false);
-	map.put("msg", "로그인실패");
-	if(ui!=null) {
-		hs.setAttribute("user", ui);
-		hs.setAttribute("isLogin", true);
-		map.put("loginOk", true);
-		map.put("msg", "로그인성공");
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> login(@Valid UserInfoVO ui, HttpSession hs) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		ui = us.getUserInfo(ui);
+		map.put("loginOk", false);
+		map.put("msg", "로그인실패");
+		if (ui != null) {
+			hs.setAttribute("user", ui);
+			hs.setAttribute("isLogin", true);
+			map.put("loginOk", true);
+			map.put("msg", "로그인성공");
+		}
+		return map;
 	}
-	return map;
-}
 
-@RequestMapping(value="/signup",method=RequestMethod.POST)
-public @ResponseBody Map<String,Object> signup(
-		@Valid UserInfoVO ui,HttpSession hs){
-	
-	
-//	Map<String,Object> rMap=new HashMap<String,Object>();
-//	
-//	us.insertUser(ui, rMap);
-//	
-//	return rMap;
-}
+	@RequestMapping(value="/signup", method=RequestMethod.POST)
+	public @ResponseBody Map<String,Object> singnup(
+			@Valid UserInfoVO ui,HttpSession hs){
+		Map<String, Object> map = new HashMap<String,Object>();
+		us.insertUser(ui, map);
+		return map;
+	}
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
 
-@RequestMapping(value="/list",method=RequestMethod.POST)
+	public @ResponseBody List<UserInfoVO> getUserInfoList(UserInfoVO ui) {
+		return us.getUserInfoList(ui);
 
-public @ResponseBody List<UserInfoVO> getUserInfoList(UserInfoVO ui){
-	return us.getUserInfoList(ui);
-	
-	
-}
-
-
+	}
 
 }
-
-	
-	
-	

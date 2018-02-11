@@ -10,9 +10,12 @@
 <style>
 div#winVP {
 	position: relative;
+
 	height: 100%;
 	border: 1px solid #dfdfdf;
-	margin: 10px;
+	margin: auto;
+	
+
 }
 </style>
 <script>
@@ -25,7 +28,7 @@ div#winVP {
       popW.button("close").hide();
       popW.button("minmax").hide();
       popW.button("park").hide();
-      popW.setText("Login"); 
+      popW.setText("Login"); 0
 
       winF.window("win1").centerOnScreen();
       winF.window("win1").denyMove();
@@ -78,6 +81,7 @@ div#winVP {
    }
 </script>
 <body>
+ 
 	<div id="winVP"></div>
 </body>
 </html>

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.iot.spring.dao.UserDAO;
 import com.iot.spring.service.UserService;
-
 import com.iot.spring.vo.UserInfoVO;
 
 @Service
@@ -26,7 +25,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserInfoVO getUserInfo(UserInfoVO ui) {
 		
-		return udao.selectUser(ui);
+		return udao.selectUserInfo(ui);
 	}
 		
 	private boolean isDuplInfo(UserInfoVO ui) {
@@ -76,7 +75,9 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserInfoVO> getUserInfoList(UserInfoVO ui) {
 		// TODO Auto-generated method stub
-		return null;
+		return udao.selectUserInfoList(ui);
 	}
+
+	
 
 }
