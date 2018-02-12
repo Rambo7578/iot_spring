@@ -20,41 +20,39 @@ public class ConnectionDAOImpl implements ConnectionDAO {
 	private SqlSessionFactory ssf;
 
 	@Override
-	public ConnectionInfoVO selectConnectionInfo(ConnectionInfoVO ci) {
-		// TODO Auto-generated method stub
-		return null;
+	public ConnectionInfoVO selectConnectionInfo(int ciNo) {
+		SqlSession ss = ssf.openSession();
+		ConnectionInfoVO ci = ss.selectOne("connection_info.selectConnectionInfoWithCiNo", ciNo);
+		ss.close();
+		return ci; 
 	}
 
 	@Override
 	public List<ConnectionInfoVO> selectConnectionInfoList(ConnectionInfoVO ci) {
-		// TODO Auto-generated method stub
-		return null;
+		List<ConnectionInfoVO> result = null;
+		final SqlSession ss = ssf.openSession();
+		result = ss.selectList("connection_info.selectConnectionInfo",ci);
+		ss.close();
+		return result;
 	}
 
 	@Override
 	public int insertConnectionInfo(ConnectionInfoVO ci) {
-		int result=0;
-		final SqlSession ss=ssf.openSession();
-		result=ss.insert("connection_info.insertConnectionInfo",ci);
+		int result = 0;
+		final SqlSession ss = ssf.openSession();
+		result = ss.insert("connection_info.insertConnectionInfo", ci);
 		ss.close();
 		return result;
 	}
 
 	@Override
-	public List<Map<String, Object>> selectDatabaseList() {
-		List<Map<String,Object>>result=null;
-		final SqlSession ss=ssf.openSession();
-		result =ss.selectList("connection_info.selectDatabase");
-		ss.close();
-		return result;
+	public List<Map<String, Object>> selectDatabaseList(SqlSession ss) throws Exception {
+		return ss.selectList("connection_info.selectDatabase");
 	}
-
 	@Override
-	public List<TableVO> selectTableList(String dbName) {
-		List<TableVO>result=null;
-		final SqlSession ss=ssf.openSession();
-		result =ss.selectList("connection_info.selectTable",dbName);
-		
+	public List<TableVO> selectTableList(SqlSession ss,String dbName) {
+		List<TableVO> result = null;
+		result = ss.selectList("connection_info.selectTable",dbName);
 		return result;
 	}
 
@@ -70,5 +68,6 @@ public class ConnectionDAOImpl implements ConnectionDAO {
 		return 0;
 	}
 
+	
 
 }

@@ -47,9 +47,10 @@ public class UserController {
 	public @ResponseBody Map<String,Object> singnup(
 			@Valid UserInfoVO ui,HttpSession hs){
 		Map<String, Object> map = new HashMap<String,Object>();
-		us.insertUser(ui, map);
+		us.insertUser(map, ui);
 		return map;
 	}
+	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
 
 	public @ResponseBody List<UserInfoVO> getUserInfoList(UserInfoVO ui) {

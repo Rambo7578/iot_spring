@@ -25,7 +25,7 @@ public class DBConnector {
       bds.setPassword(ci.getCiPwd());
       ssf = new SqlSessionFactoryBean();
       ssf.setDataSource(bds);
-      ssf.setConfigLocation(new ClassPathResource("/mybatis-conf.xml"));
+      ssf.setConfigLocation(new ClassPathResource("/custom-mybatis-conf.xml"));
       
    }
 

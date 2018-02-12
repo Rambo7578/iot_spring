@@ -21,9 +21,7 @@
 
 		var au = new AjaxUtil("${root}/emp/lista", null, "GET", "json");
 		function callback(res) {
-			mygrid.parse({
-				data : res.empList1
-			}, "js");
+			mygrid.parse({data : res.empList1}, "js");
 
 		}
 

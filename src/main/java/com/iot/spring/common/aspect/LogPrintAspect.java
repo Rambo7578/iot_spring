@@ -3,6 +3,7 @@ package com.iot.spring.common.aspect;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -42,6 +43,12 @@ public class LogPrintAspect {
 	@After("execution(* com.iot.spring.controller.*Controller.*(..))")
 	public void afterLog(JoinPoint jp) {
 		log.info("@After =>{}", jp);
+	}
+	
+
+	@AfterReturning("execution(* com.iot.spring.controller.*Controller.*(..))")
+	public void afterReturningLog(JoinPoint jp) {
+		log.info("@AfterReturning UrlController result =>{}", jp);
 	}
 
 }

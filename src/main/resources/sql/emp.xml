@@ -9,5 +9,10 @@
 		empNo,empName,empSal
 		from emp
 	</select>
-
+	
+	<insert id="insertEmp" parameterType="map">
+	insert into emp(empName, empSal)
+	values (#{empName},#{empSal})
+	</insert>
+	
 </mapper>

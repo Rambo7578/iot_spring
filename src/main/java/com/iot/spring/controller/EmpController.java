@@ -1,6 +1,8 @@
 package com.iot.spring.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -16,11 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.iot.spring.service.EmpService;
-import com.iot.spring.service.UserService;
-import com.iot.spring.service.impl.ConnectionServiceImpl;
-import com.iot.spring.vo.ConnectionInfoVO;
 import com.iot.spring.vo.Emp;
-import com.iot.spring.vo.User;
 
 
 
@@ -42,20 +40,21 @@ public class EmpController {
 	}
 
 	@RequestMapping(value = "/lista", method = RequestMethod.GET)
-	public @ResponseBody List<Emp> getEmpListAjax(Model m) {
+	public @ResponseBody Map<String, Object> getEmpListAjax(Model m) {
 		List<Emp> empList = es.getEmpList();
-		return empList;
+		Map<String,Object>returnMap=new HashMap<String,Object>();
+		returnMap.put("empList1", empList);
+		returnMap.put("empList2", empList);
+		returnMap.put("msg", "리스트 조회 성공");
+		return returnMap;
 
 	}
 	
 
-
-	
-	
-
 	@RequestMapping(value = "insert", method = RequestMethod.GET)
-	public ModelAndView InsertEmp(@Valid Emp empDTO, Errors es, ModelAndView m) throws Exception {
-		System.out.println("fasafafs");
+	public ModelAndView InsertEmp(
+			@Valid Emp empDTO, Errors es, ModelAndView m) throws Exception {
+		
 		if (es.hasErrors()) {
 			log.info("error =>{}", es);
 			throw new Exception(es.getAllErrors().get(0).getDefaultMessage());
