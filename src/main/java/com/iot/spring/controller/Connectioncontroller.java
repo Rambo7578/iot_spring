@@ -3,6 +3,8 @@ package com.iot.spring.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,7 @@ import com.iot.spring.service.ConnectionService;
 import com.iot.spring.vo.ColumnVO;
 import com.iot.spring.vo.ConnectionInfoVO;
 import com.iot.spring.vo.TableVO;
+import com.iot.spring.vo.UserInfoVO;
 
 @Controller
 @RequestMapping("/connection")
@@ -36,25 +39,58 @@ public class Connectioncontroller {
 		return map;
 	}
 
-	@RequestMapping(value = "/db_list", method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> getDatabaseList(@RequestParam Map<String, Object> map) {
+//	@RequestMapping(value = "/db_list", method = RequestMethod.GET)
+//	public @ResponseBody Map<String, Object> getDatabaseList(@RequestParam Map<String, Object> map) {
+//		List<Map<String, Object>> dbList = cs.getDatabasetList();
+//		map.put("dbList", dbList);
+//		return map;
+//	}
+	
+	@RequestMapping(value = "/db_list/{ciNO}", method = RequestMethod.GET)
+	public @ResponseBody Map<String, Object> getDatabaseList(@RequestParam ("ciNo", int ciNo) {
 		List<Map<String, Object>> dbList = cs.getDatabasetList();
 		map.put("dbList", dbList);
 		return map;
 	}
-
-	@RequestMapping(value = "/tables/{dbName}", method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> getTableList(@PathVariable("dbName")String dbName, Map<String, Object> map) {
-		List<TableVO> dbList = cs.getTableList(dbName);
-		map.put("dbList", dbList);
-		return map;
-	}
 	
+	
+
 	@RequestMapping(value = "/cutable/{dbName}", method = RequestMethod.GET)
-	public @ResponseBody Map<String, Object> getColumnList(@PathVariable("dbName")String dbName, Map<String, Object> map) {
+	public @ResponseBody Map<String, Object> getColumnList(@PathVariable("dbName") String dbName,
+			Map<String, Object> map) {
 		List<ColumnVO> cuList = cs.getColumnList(dbName);
 		map.put("cuList", cuList);
 		return map;
 	}
+
+
+	   @RequestMapping(value="/list", method=RequestMethod.GET)
+	   public @ResponseBody Map<String,Object> getConnectionInfoList(
+	         Map<String,Object> map, HttpSession hs) {
+	      UserInfoVO ui = new UserInfoVO();
+	      if(hs.getAttribute("user")!=null) {
+	         ui = (UserInfoVO)hs.getAttribute("user");
+	      }else {
+	         ui.setUiId("red");
+	      }
+	      ConnectionInfoVO ci = new ConnectionInfoVO();
+	      ci.setUiId(ui.getUiId());
+	      List<ConnectionInfoVO> ciList = cs.getConnectionInfoList(ci);
+	      map.put("list", ciList);
+	      return map;
+	   }
+
+	   
+	   @RequestMapping(value="/tables/{dbName}/{parentId}", method=RequestMethod.GET)
+	   public @ResponseBody Map<String,Object> getTabeList(
+	         @PathVariable("dbName")String dbName, 
+	         @PathVariable("parentId")String parentId,
+	         HttpSession hs,
+	         Map<String,Object> map) {
+	      List<TableVO> tableList = cs.getTableList(hs, dbName);
+	      map.put("list", tableList);
+	      map.put("parentId", parentId);
+	      return map;
+	   }
 
 }

@@ -3,6 +3,11 @@ package com.iot.spring.vo;
 public class TableVO {
 	private String tableName;
 	private String tableComment;
+	private double tableSize;
+	@Override
+	public String toString() {
+		return "TableVO [tableName=" + tableName + ", tableComment=" + tableComment + ", tableSize=" + tableSize + "]";
+	}
 	public String getTableName() {
 		return tableName;
 	}
@@ -21,13 +26,5 @@ public class TableVO {
 	public void setTableSize(double tableSize) {
 		this.tableSize = tableSize;
 	}
-	private double tableSize;
-	@Override
-	public String toString() {
-		return "TableVO [tableName=" + tableName + ", tableComment=" + tableComment + ", tableSize=" + tableSize
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}
-	
 
 }

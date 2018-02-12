@@ -30,22 +30,7 @@ html, body {
   animation-duration: 20s;
   animation-iteration-count: infinite;
 }
-@keyframes move {
-  0% {
-    transform: translateX(0px);
-    opacity: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateX(70vmin);
-    opacity: 0;
-  }
-}
+
 .wrapper .name_container {
   position: absolute;
   left: 50%;

@@ -14,11 +14,12 @@
 <title>${title}</title>
 </head>
 <body>
-<div class="wrapper">
-    <div class="name_container">
+ <div class="name_container">
         <div class="name">Dinesh Balaji</div>
         <div class="designation">Designer &amp; Developer</div>
     </div>
+<div class="wrapper">
+   
 </div>
 
 </body>

@@ -10,13 +10,13 @@
 <style>
 div#winVP {
 	position: relative;
-
+ 
 	height: 100%;
 	border: 1px solid #dfdfdf;
 	margin: auto;
 	
-
 }
+
 </style>
 <script>
    var winF,popW;
@@ -83,5 +83,6 @@ div#winVP {
 <body>
  
 	<div id="winVP"></div>
+
 </body>
 </html>

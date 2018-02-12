@@ -8,14 +8,17 @@ import com.iot.spring.vo.UserInfoVO;
 
 public interface UserService {
 	
-	public List<UserInfoVO> getUserList();
 	
-	public void insertUser(UserInfoVO ui, Map<String, Object> rMap);
+	
+	List<UserInfoVO> getUserInfoList(UserInfoVO ui);
+	UserInfoVO getUserInfo(UserInfoVO ui);
+	void insertUser(Map<String,Object> rMap, UserInfoVO ui);
+	
+	
 	public void deleteUser(UserInfoVO ui, Map<String, Object> rMap);
 	public void updateUser(UserInfoVO ui, Map<String, Object> rMap);
-	public UserInfoVO getUserInfo(UserInfoVO ui);
+	
 
-	public List<UserInfoVO> getUserInfoList(UserInfoVO ui);
 	
 	
 	

@@ -2,51 +2,51 @@ package com.iot.spring.vo;
 
 public class UserInfoVO {
 	
-	private int uNo;
-	private String uName;
-	private String uId;
-	private String uPwd;
-	private String uEmail;
-	private String admin;
+	private int uiNo;
+	private String niName;
+	private String uiId;
+	private String uiPwd;
+	private String uiEmail;
+	private char admin;
 	@Override
 	public String toString() {
-		return "UserInfoVO [uNo=" + uNo + ", uName=" + uName + ", uId=" + uId + ", uPwd=" + uPwd + ", uEmail=" + uEmail
-				+ ", admin=" + admin + "]";
+		return "UserInfoVO [uiNo=" + uiNo + ", niName=" + niName + ", uiId=" + uiId + ", uiPwd=" + uiPwd + ", uiEmail="
+				+ uiEmail + ", admin=" + admin + "]";
 	}
-	public int getuNo() {
-		return uNo;
+	public int getUiNo() {
+		return uiNo;
 	}
-	public void setuNo(int uNo) {
-		this.uNo = uNo;
+	public void setUiNo(int uiNo) {
+		this.uiNo = uiNo;
 	}
-	public String getuName() {
-		return uName;
+	public String getNiName() {
+		return niName;
 	}
-	public void setuName(String uName) {
-		this.uName = uName;
+	public void setNiName(String niName) {
+		this.niName = niName;
 	}
-	public String getuId() {
-		return uId;
+	public String getUiId() {
+		return uiId;
 	}
-	public void setuId(String uId) {
-		this.uId = uId;
+	public void setUiId(String uiId) {
+		this.uiId = uiId;
 	}
-	public String getuPwd() {
-		return uPwd;
+	public String getUiPwd() {
+		return uiPwd;
 	}
-	public void setuPwd(String uPwd) {
-		this.uPwd = uPwd;
+	public void setUiPwd(String uiPwd) {
+		this.uiPwd = uiPwd;
 	}
-	public String getuEmail() {
-		return uEmail;
+	public String getUiEmail() {
+		return uiEmail;
 	}
-	public void setuEmail(String uEmail) {
-		this.uEmail = uEmail;
+	public void setUiEmail(String uiEmail) {
+		this.uiEmail = uiEmail;
 	}
-	public String getAdmin() {
+	public char getAdmin() {
 		return admin;
 	}
-	public void setAdmin(String admin) {
+	public void setAdmin(char admin) {
 		this.admin = admin;
 	}
 	

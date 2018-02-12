@@ -9,15 +9,34 @@
 <mapper namespace="connection">
 	<select id="selectConnection" resultType="ci">
 		select
-		ciNo,ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,ciEtc
+		ciNo,ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,ciEtc,ciNo as id,ciName as text,uId
 		from
 		connection_info
+		where uId=#{uId}
+		<if test="ciNo!=0">
+		and ciNo=#{ciNo}
+		</if>
+		
 	</select>
+	<select id="selectConnectionInfoWithCiNo" resultType="ci" parameterType="int">
+		select
+		ciNo,ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,ciEtc,ciNo as id,ciName as text,uId
+		from
+		connection_info
+		where uId=#{uId}
+		<if test="ciNo!=0">
+		and ciNo=#{ciNo}
+		</if>
+		
+	</select>
+	
+	
+	
 
 	<select id="insertConnection" resultType="ci">
 		insert into
 		connection_info(ciNo,ciName,ciUrl,ciPort,ciDatabase,ciUser,ciPwd,ciEtc)
-		value(#{ciName},#{ciUrl},#{ciPort},#{ciDatabase},#{ciUser},#{ciPwd},#{ciEtc})
+		value(#{ciName},#{ciUrl},#{ciPort},#{ciDatabase},#{ciUser},#{ciPwd},#{ciEtc},#{uId})
 	</select>
 	
 	<select id="deleteConnection" resultType="ci">

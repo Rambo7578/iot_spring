@@ -1,27 +1,35 @@
 package com.iot.spring.vo;
 
+import java.util.Arrays;
+
 public class ConnectionInfoVO {
 
 	private int ciNo;
-	private String ciName;
+	private String niName;
 	private String ciUrl;
 	private int ciPort;
 	private String ciDatabase;
 	private String ciUser;
 	private String ciPwd;
-	private String ciEct;
-	private String uId;
+	private String ciEtc;
+	private String uiId;
+	@Override
+	public String toString() {
+		return "ConnectionInfoVO [ciNo=" + ciNo + ", niName=" + niName + ", ciUrl=" + ciUrl + ", ciPort=" + ciPort
+				+ ", ciDatabase=" + ciDatabase + ", ciUser=" + ciUser + ", ciPwd=" + ciPwd + ", ciEtc=" + ciEtc
+				+ ", uiId=" + uiId + "]";
+	}
 	public int getCiNo() {
 		return ciNo;
 	}
 	public void setCiNo(int ciNo) {
 		this.ciNo = ciNo;
 	}
-	public String getCiName() {
-		return ciName;
+	public String getNiName() {
+		return niName;
 	}
-	public void setCiName(String ciName) {
-		this.ciName = ciName;
+	public void setNiName(String niName) {
+		this.niName = niName;
 	}
 	public String getCiUrl() {
 		return ciUrl;
@@ -53,24 +61,17 @@ public class ConnectionInfoVO {
 	public void setCiPwd(String ciPwd) {
 		this.ciPwd = ciPwd;
 	}
-	public String getCiEct() {
-		return ciEct;
+	public String getCiEtc() {
+		return ciEtc;
 	}
-	public void setCiEct(String ciEct) {
-		this.ciEct = ciEct;
+	public void setCiEtc(String ciEtc) {
+		this.ciEtc = ciEtc;
 	}
-	public String getuId() {
-		return uId;
+	public String getUiId() {
+		return uiId;
 	}
-	public void setuId(String uId) {
-		this.uId = uId;
+	public void setUiId(String uiId) {
+		this.uiId = uiId;
 	}
-	@Override
-	public String toString() {
-		return "ConnectionInfoVO [ciNo=" + ciNo + ", ciName=" + ciName + ", ciUrl=" + ciUrl + ", ciPort=" + ciPort
-				+ ", ciDatabase=" + ciDatabase + ", ciUser=" + ciUser + ", ciPwd=" + ciPwd + ", ciEct=" + ciEct
-				+ ", uId=" + uId + "]";
-	}
-	
-	
+
 }

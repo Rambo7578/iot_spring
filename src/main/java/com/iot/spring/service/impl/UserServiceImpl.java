@@ -14,70 +14,55 @@ import com.iot.spring.vo.UserInfoVO;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO udao;
-	
 
 	@Override
-	public List<UserInfoVO> getUserList() {
+	public List<UserInfoVO> getUserInfoList(UserInfoVO ui) {
 		
-		return udao.selectUserList();
+		return udao.selectUserInfoList(ui);
 	}
 	
-	@Override
-	public UserInfoVO getUserInfo(UserInfoVO ui) {
-		
-		return udao.selectUserInfo(ui);
-	}
-		
-	private boolean isDuplInfo(UserInfoVO ui) {
+	private boolean isDuplUserInfo(UserInfoVO ui) {
 		if(udao.checkUserInfo(ui)==1) {
 			return true;
 		}
-		
 		return false;
 	}
 	
-	@Override
-	public void insertUser(UserInfoVO ui, Map<String, Object> rMap) {
-		rMap.put("msg","회원가입이 실패 하였습니다.");
-		rMap.put("signupOk",false);
-		if(isDuplInfo(ui)) {
-			rMap.put("msg",ui.getuId()+"는 이미 존재하는 아이디입니다");
-			return;
-		}
-		
-		
-		int result = udao.insertUser(ui);
-		if(result==1) {
-			rMap.put("msg","회원가입이 성공");
-			rMap.put("signupOk",true);
-		}
-	}
+	
 	
 
 	@Override
-	public void deleteUser(UserInfoVO ui, Map<String, Object> rMap) {
+	public UserInfoVO getUserInfo(UserInfoVO ui) {
+		// TODO Auto-generated method stub
+		return udao.selectUserInfo(ui);
+	}
+
+	@Override
+	public void insertUser(Map<String, Object> rMap, UserInfoVO ui) {
+		rMap.put("msg", "회원가입이 실패하였습니다.");
+		rMap.put("signupOk", false);
+		if(isDuplUserInfo(ui)) {
+			rMap.put("msg", ui.getUiId() + "는 이미 존재하는 아이디입니다.");
+			return;
+		}
 		int result = udao.insertUser(ui);
-		rMap.put("msg", "실패");
-		if(result!=0) {
-			rMap.put("msg", "성공");
-		}			
+		if(result==1) {
+			rMap.put("msg", "회원가입이 성공하였습니다.");
+			rMap.put("signupOk", true);
+		}
+	}
+
+	@Override
+	public void deleteUser(UserInfoVO ui, Map<String, Object> rMap) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void updateUser(UserInfoVO ui, Map<String, Object> rMap) {
-		int result = udao.insertUser(ui);
-		rMap.put("msg", "실패");
-		if(result!=0) {
-			rMap.put("msg", "성공");
-		}			
-	}
-
-	@Override
-	public List<UserInfoVO> getUserInfoList(UserInfoVO ui) {
 		// TODO Auto-generated method stub
-		return udao.selectUserInfoList(ui);
+		
 	}
 
 	
-
 }
