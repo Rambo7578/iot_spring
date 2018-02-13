@@ -5,34 +5,36 @@
 
 <mapper namespace="user">
 
-<select id="selectUser" resultType="ui" parameterType="ui">
+<select id="selectUser" parameterType="ui" resultType="ui">
 		select
-		uNo,uName,uId,uPwd,uEmail,admin 
+		uino,uiname,uiid,uipwd,uiEmail, admin 
 		from user_info
 		where 1=1
-		<if test="uId!=null">
-			and uId = #{uId}
+		<if test="uiId!=null">
+			and uiid=#{uiId}
 		</if>
-		<if test="uPwd!=null">
-			and uId = #{uPwd}
+		<if test="uiPwd!=null">
+			and uipwd=#{uiPwd}
 		</if>
 	</select>
 	
-	<select id="checkUser" resultType="int" parameterType="ui">
+	<select id="checkUser" parameterType="ui" resultType="int">
 		select
 		count(1)
 		from user_info
-		where uid=#{uId}
+		where uiid = #{uiId}
 	</select>
 	
-	
-	<insert id="insertUser" parameterType="map">
-	insert into user_info(uName,uId,uPwd,uEmail,admin)
-	value(#{uName},#{uId},#{uPwd},#{uEmail},#{admin})
-	
+	<insert id="insertUser" parameterType="ui">
+		insert into 
+		user_info(uiname,uiid,uipwd,uiemail, admin)
+		values(#{uiname},#{uiId},#{uiPwd},#{UIEMAIL},#{admin})
 	</insert>
-	
+	<delete id="deleteUser" parameterType="map">
+		delete from user_info where uino = #{uino}
+	</delete>
+</mapper>  
 
 
 
-</mapper>
+

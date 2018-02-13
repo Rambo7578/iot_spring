@@ -18,7 +18,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<UserInfoVO> selectUserInfoList(UserInfoVO ui) {
 		final SqlSession ss = ssf.openSession();
-		List<UsertInfoVO> result = ss.selectList("user.selectUser", ui);
+		List<UserInfoVO> result = ss.selectList("user.selectUser", ui);
 		ss.close();
 		return result;
 	}
