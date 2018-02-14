@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <typeAlias alias="ci" type="com.iot.spring.vo.ConnectionInfoVO" /> -->
+
+
+<mapper namespace="connection_info">
+	<select id="selectConnectionInfo" parameterType="ci" resultType="ci">
+		select
+		ciNo, ciName, ciUrl, ciPort, ciDatabase, ciUser
+		,ciPwd, ciEtc, ciNo as id, ciName as text, uiId
+		from connection_info
+		where uiId = #{uiId}
+	</select>
+	
+	<select id="selectConnectionInfoWithCiNo" parameterType="int" resultType="ci">
+		select
+		ciNo, ciName, ciUrl, ciPort, ciDatabase, ciUser
+		,ciPwd, ciEtc, ciNo as id, ciName as text, uiId
+		from connection_info
+		where ciNo = #{ciNo}
+	</select>
+	
+	
+	
+
+<insert id="insertConnectionInfo" parameterType="ci">
+		insert into connection_info(ciName, ciUrl, ciPort, ciDatabase, ciUser
+		,ciPwd, ciEtc, uiId)
+		values(#{ciName},#{ciUrl},#{ciPort},#{ciDatabase},#{ciUser},
+		#{ciPwd},#{ciEtc}, #{uiId})
+	</insert>
+	
+	
+	<select id="selectDatabase" resultType="map">
+		show databases
+	</select>
+	
+	<select id="selectTable" resultType="tvo" parameterType="string" >
+		select table_name as tableName,
+		table_comment as tableComment,
+		(data_length+index_length)/1024 as tableSize 
+		from information_schema.tables
+		where table_schema=#{dbName}
+		and (table_type='BASE TABLE'
+		or table_type='SYSTEM VIEW');
+	</select>
+	
+	
+	
+	
+	
+	<select id="deleteConnection" resultType="ci">
+	delete from connection_info where ciName=#{ciNo}
+	</select>
+	
+	
+	<select id="updateConnection>" resultType="ci">
+	update connection_info
+	set ciName=#{ciName},
+	ciUrl=#{ciUrl},
+	ciPort=#{ciPort},
+	ciDatabase=#{ciDatabase},
+	ciUser=#{ciUser},
+	ciPwd=#{ciPwd},
+	ciEtc=#{ciEtc}
+	where ciNo=#{ciNo}
+	</select>
+	
+
+	<select id="selectColumn" resultType="cvo" parameterType="string">
+		select
+		column_name as columnname,
+		column_default as columndefault,
+		is_nullable as isnullable,
+		data_type as datatype,
+		character_maximum_length as charactermaximumlength,
+		column_type as columntype,
+		column_key as columnkey,
+		column_comment as columncomment
+		from information_schema.columns
+		where table_schema=#{dbName}
+		and table_name='user_info'
+		order by ordinal_position
+		;
+	</select>
+
+
+</mapper>

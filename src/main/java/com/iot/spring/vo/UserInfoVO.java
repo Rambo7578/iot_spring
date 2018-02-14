@@ -3,14 +3,14 @@ package com.iot.spring.vo;
 public class UserInfoVO {
 	
 	private int uiNo;
-	private String niName;
+	private String uiName;
 	private String uiId;
 	private String uiPwd;
 	private String uiEmail;
 	private char admin;
 	@Override
 	public String toString() {
-		return "UserInfoVO [uiNo=" + uiNo + ", niName=" + niName + ", uiId=" + uiId + ", uiPwd=" + uiPwd + ", uiEmail="
+		return "UserInfoVO [uiNo=" + uiNo + ", uiName=" + uiName + ", uiId=" + uiId + ", uiPwd=" + uiPwd + ", uiEmail="
 				+ uiEmail + ", admin=" + admin + "]";
 	}
 	public int getUiNo() {
@@ -19,11 +19,11 @@ public class UserInfoVO {
 	public void setUiNo(int uiNo) {
 		this.uiNo = uiNo;
 	}
-	public String getNiName() {
-		return niName;
+	public String getUiName() {
+		return uiName;
 	}
-	public void setNiName(String niName) {
-		this.niName = niName;
+	public void setUiName(String uiName) {
+		this.uiName = uiName;
 	}
 	public String getUiId() {
 		return uiId;

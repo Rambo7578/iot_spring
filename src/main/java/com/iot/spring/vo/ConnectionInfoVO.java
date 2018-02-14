@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class ConnectionInfoVO {
 
 	private int ciNo;
-	private String niName;
+	private String ciName;
 	private String ciUrl;
 	private int ciPort;
 	private String ciDatabase;
@@ -13,23 +13,18 @@ public class ConnectionInfoVO {
 	private String ciPwd;
 	private String ciEtc;
 	private String uiId;
-	@Override
-	public String toString() {
-		return "ConnectionInfoVO [ciNo=" + ciNo + ", niName=" + niName + ", ciUrl=" + ciUrl + ", ciPort=" + ciPort
-				+ ", ciDatabase=" + ciDatabase + ", ciUser=" + ciUser + ", ciPwd=" + ciPwd + ", ciEtc=" + ciEtc
-				+ ", uiId=" + uiId + "]";
-	}
+	
 	public int getCiNo() {
 		return ciNo;
 	}
 	public void setCiNo(int ciNo) {
 		this.ciNo = ciNo;
 	}
-	public String getNiName() {
-		return niName;
+	public String getCiName() {
+		return ciName;
 	}
-	public void setNiName(String niName) {
-		this.niName = niName;
+	public void setCiName(String ciName) {
+		this.ciName = ciName;
 	}
 	public String getCiUrl() {
 		return ciUrl;
@@ -73,5 +68,11 @@ public class ConnectionInfoVO {
 	public void setUiId(String uiId) {
 		this.uiId = uiId;
 	}
-
+	@Override
+	public String toString() {
+		return "ConnectionInfoVO [ciNo=" + ciNo + ", ciName=" + ciName + ", ciUrl=" + ciUrl + ", ciPort=" + ciPort
+				+ ", ciDatabase=" + ciDatabase + ", ciUser=" + ciUser + ", ciPwd=" + ciPwd + ", ciEtc=" + ciEtc
+				+ ", uiId=" + uiId + "]";
+	}
+	
 }
