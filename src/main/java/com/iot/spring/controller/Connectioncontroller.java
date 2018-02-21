@@ -90,8 +90,7 @@ public class Connectioncontroller {
 		public @ResponseBody Map<String,Object> getTabeList(
 				@PathVariable("dbName")String dbName, 
 				@PathVariable("parentId")String parentId,
-				HttpSession hs,
-				Map<String,Object> map) {
+				HttpSession hs,	Map<String,Object> map) {
 			List<TableVO> tableList = cs.getTableList(hs, dbName);
 			map.put("list", tableList);
 			map.put("parentId", parentId);
